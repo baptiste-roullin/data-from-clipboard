@@ -1,4 +1,4 @@
-EARLY VERSION, NOT INTENDED FOR PRODUCTION USAGE
+EARLY VERSION, NOT INTENDED FOR REAL-WOLRD USE
 
 [A working release can be found here](https://github.com/Saint-loup/data-from-clipboard/releases/latest)
 
