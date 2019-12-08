@@ -10,8 +10,7 @@
         "actions": {
           "Startup": "onStartup",
           "Shutdown": "onShutdown",
-          "SupplyData": "onSupplyData",
-          "SupplyTextFromFile":"onSupplyTextFromFile"
+          "SupplyTextFromClipboard":"onSupplyTextFromClipboard"
         }
       }
     }

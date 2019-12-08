@@ -1,12 +1,15 @@
+// Much of the code is adapter from:
+//https://github.com/Ashung/Automate-Sketch/blob/master/automate-sketch.sketchplugin/Contents/Sketch/Data/Supply_Data.js
+
 const sketch = require('sketch')
 const { DataSupplier } = sketch
 const util = require('util')
 
 export function onStartup () {
   // To register the plugin, uncomment the relevant type:
-  DataSupplier.registerDataSupplier('public.text', 'data-from-clipboard', 'SupplyData')
+  //DataSupplier.registerDataSupplier('public.text', 'data-from-clipboard', 'SupplyData')
   // DataSupplier.registerDataSupplier('public.image', 'data-from-clipboard', 'SupplyData')
-  DataSupplier.registerDataSupplier("public.text", "Text From File", "SupplyTextFromFile");  
+  DataSupplier.registerDataSupplier("public.text", "Text From Clipboard", "SupplyTextFromClipboard");  
 }
 
 export function onShutdown () {
@@ -14,17 +17,10 @@ export function onShutdown () {
   DataSupplier.deregisterDataSuppliers()
 }
 
-export function onSupplyData (context) {
-  let dataKey = context.data.key
-  const items = util.toArray(context.data.items).map(sketch.fromNative)
-  items.forEach((item, index) => {
-    let data = Math.random().toString()
-    DataSupplier.supplyDataAtIndex(dataKey, data, index)
-  })
-}
 
 
-export function onSupplyTextFromFile (context) {
+
+export function onSupplyTextFromClipboard (context) {
    // var texts = System.textsFromChooseFile();
     var pasteboard = NSPasteboard.generalPasteboard();
      var supportedPasteboardTypes = [
