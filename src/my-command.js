@@ -1,15 +1,12 @@
-// Much of the code is adapter from:
+// Much of the code is adapted from:
 //https://github.com/Ashung/Automate-Sketch/blob/master/automate-sketch.sketchplugin/Contents/Sketch/Data/Supply_Data.js
 
 const sketch = require('sketch')
 const { DataSupplier } = sketch
-const util = require('util')
+const UI = require('sketch/ui')
 
 export function onStartup () {
-  // To register the plugin, uncomment the relevant type:
-  //DataSupplier.registerDataSupplier('public.text', 'data-from-clipboard', 'SupplyData')
-  // DataSupplier.registerDataSupplier('public.image', 'data-from-clipboard', 'SupplyData')
-  DataSupplier.registerDataSupplier("public.text", "Text From Clipboard", "SupplyTextFromClipboard");  
+  DataSupplier.registerDataSupplier("public.text", "Text from clipboard", "SupplyTextFromClipboard");  
 }
 
 export function onShutdown () {
@@ -18,37 +15,43 @@ export function onShutdown () {
 }
 
 
-
-
 export function onSupplyTextFromClipboard (context) {
-   // var texts = System.textsFromChooseFile();
-    var pasteboard = NSPasteboard.generalPasteboard();
-     var supportedPasteboardTypes = [
+    let pasteboard = NSPasteboard.generalPasteboard();
+     let supportedPasteboardTypes = [
             "public.rtf",
             "public.multipleTextSelection",
-            "public.pdf"
+            "public.string",
+            "public.utf8-plain-text",
+            "public.html",
+            "com.apple.traditional-mac-plain-text"
         ];
     if (pasteboard.pasteboardItems().count() > 0) {
-      var pasteboardType = pasteboard.pasteboardItems().firstObject().types().firstObject();
-      //console.log(pasteboardType )
-        if (supportedPasteboardTypes.indexOf(String(pasteboardType))) {
+      let pasteboardType = pasteboard.pasteboardItems().firstObject().types().firstObject();
+
+        if (supportedPasteboardTypes.indexOf(String(pasteboardType)) > -1 ) {
+
           let clipboardString = pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString);
 
           let clipboardArray = clipboardString.split(/\n/g);
-          console.log(clipboardString, clipboardArray)
+          console.log(String(pasteboardType), supportedPasteboardTypes.indexOf(String(pasteboardType)))
           supplyOrderedData(context, clipboardArray);
 
         }
+        else {
+          UI.message("Content in clipboard is not text")
+
     }
-
-
+    }
+    else {
+      UI.message("Clipboard is empty")
+    }
 };
 
 function supplyOrderedData(context, data) {
-    for (var i = 0; i < context.data.requestedCount; i++) {
-        var dataIndex;
+    for (let i = 0; i < context.data.requestedCount; i++) {
+        let dataIndex;
         if (context.data.isSymbolInstanceOverride == 1) {
-            var selection = NSDocumentController.sharedDocumentController().currentDocument().selectedLayers().layers();
+            let selection = NSDocumentController.sharedDocumentController().currentDocument().selectedLayers().layers();
             dataIndex = selection.indexOfObject(context.data.items.objectAtIndex(i).symbolInstance())
         } else {
             dataIndex = i;

@@ -5,6 +5,11 @@
   "engines": {
     "sketch": ">=3.0"
   },
+"repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saint-loup/data-from-clipboard.git"
+  }
+  ,
   "skpm": {
     "name": "data-from-clipboard",
     "manifest": "src/manifest.json",
