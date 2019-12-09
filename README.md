@@ -1,4 +1,4 @@
-EARLY VERSION, NOT INTENDED FOR REAL-WOLRD USE
+BETA VERSION
 
 [A working release can be found here](https://github.com/Saint-loup/data-from-clipboard/releases/latest)
 
