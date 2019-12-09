@@ -19,21 +19,31 @@ export function onSupplyTextFromClipboard (context) {
     let pasteboard = NSPasteboard.generalPasteboard();
      let supportedPasteboardTypes = [
             "public.rtf",
-            "public.multipleTextSelection",
             "public.string",
+            "public.plain-text",
             "public.utf8-plain-text",
+            "public.multipleTextSelection",
             "public.html",
-            "com.apple.traditional-mac-plain-text"
+            "com.apple.traditional-mac-plain-text",
+            "org.mozilla.custom-clipdata",
+            "org.chromium.web-custom-data",
+            "NSStringPboardType",
+            "public.utf16-external-plain-text",
+            "public.utf16-plain-text",
+            "com.apple.iWork.TSPNativeData",
+            "public.text",
+            "com.apple.webarchive",
+            "com.adobe.pdf"
         ];
     if (pasteboard.pasteboardItems().count() > 0) {
       let pasteboardType = pasteboard.pasteboardItems().firstObject().types().firstObject();
+          console.log(pasteboardType, supportedPasteboardTypes.indexOf(String(pasteboardType)))
+
 
         if (supportedPasteboardTypes.indexOf(String(pasteboardType)) > -1 ) {
 
           let clipboardString = pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString);
-
           let clipboardArray = clipboardString.split(/\n/g);
-          console.log(String(pasteboardType), supportedPasteboardTypes.indexOf(String(pasteboardType)))
           supplyOrderedData(context, clipboardArray);
 
         }
