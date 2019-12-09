@@ -1,6 +1,6 @@
 {
   "name": "data-from-clipboard",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A DataSupplier plugin",
   "engines": {
     "sketch": ">=3.0"
