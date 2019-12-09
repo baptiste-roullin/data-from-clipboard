@@ -7,6 +7,8 @@ const UI = require('sketch/ui')
 
 export function onStartup () {
   DataSupplier.registerDataSupplier("public.text", "Text from clipboard", "SupplyTextFromClipboard");  
+  DataSupplier.registerDataSupplier("public.text", "Random text from clipboard", "SupplyRandomTextFromClipboard");  
+
 }
 
 export function onShutdown () {
@@ -16,8 +18,18 @@ export function onShutdown () {
 
 
 export function onSupplyTextFromClipboard (context) {
-    let pasteboard = NSPasteboard.generalPasteboard();
-     let supportedPasteboardTypes = [
+    supplyOrderedData(context, getPasteBoardData(context));
+
+};
+
+export function onSupplyRandomTextFromClipboard (context) {
+        supplyRandomData(context, getPasteBoardData(context));
+
+};
+
+function getPasteBoardData(context) {
+  let pasteboard = NSPasteboard.generalPasteboard();
+    let supportedPasteboardTypes = [
             "public.rtf",
             "public.string",
             "public.plain-text",
@@ -33,39 +45,67 @@ export function onSupplyTextFromClipboard (context) {
             "com.apple.iWork.TSPNativeData",
             "public.text",
             "com.apple.webarchive",
-            "com.adobe.pdf"
+            "com.adobe.pdf",
+            "com.microsoft.word.doc",
+            "com.microsoft.excel.xls",
+            "com.microsoft.powerpoint.ppt"
         ];
+    // test wether pasteboard not empty
     if (pasteboard.pasteboardItems().count() > 0) {
       let pasteboardType = pasteboard.pasteboardItems().firstObject().types().firstObject();
-          console.log(pasteboardType, supportedPasteboardTypes.indexOf(String(pasteboardType)))
+        console.log(pasteboardType, supportedPasteboardTypes.indexOf(String(pasteboardType)))
 
-
+    // test wether content is text
         if (supportedPasteboardTypes.indexOf(String(pasteboardType)) > -1 ) {
 
           let clipboardString = pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString);
           let clipboardArray = clipboardString.split(/\n/g);
-          supplyOrderedData(context, clipboardArray);
-
+          return clipboardArray
         }
         else {
           UI.message("Content in clipboard is not text")
-
-    }
+           console.log(pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString))
+          return false
+      }
     }
     else {
       UI.message("Clipboard is empty")
+      return false
     }
-};
+}
+
 
 function supplyOrderedData(context, data) {
-    for (let i = 0; i < context.data.requestedCount; i++) {
-        let dataIndex;
-        if (context.data.isSymbolInstanceOverride == 1) {
-            let selection = NSDocumentController.sharedDocumentController().currentDocument().selectedLayers().layers();
-            dataIndex = selection.indexOfObject(context.data.items.objectAtIndex(i).symbolInstance())
-        } else {
-            dataIndex = i;
-        }
-        DataSupplier.supplyDataAtIndex(context.data.key, data[dataIndex % data.length], i);
-    }
+   
+   if (!data) {
+    return
+  }
+
+  for (let i = 0; i < context.data.requestedCount; i++) {
+      let dataIndex;
+      if (context.data.isSymbolInstanceOverride == 1) {
+          let selection = NSDocumentController.sharedDocumentController().currentDocument().selectedLayers().layers();
+          dataIndex = selection.indexOfObject(context.data.items.objectAtIndex(i).symbolInstance())
+      } else {
+          dataIndex = i;
+      }
+      DataSupplier.supplyDataAtIndex(context.data.key, data[dataIndex % data.length], i);
+  }
+}
+
+function supplyRandomData(context, data) {
+  if (!data) {
+    return
+  }
+
+  for (let i = 0; i < context.data.requestedCount; i++) {
+      let dataIndex;
+      if (context.data.isSymbolInstanceOverride == 1) {
+          let selection = NSDocumentController.sharedDocumentController().currentDocument().selectedLayers().layers();
+          dataIndex = selection.indexOfObject(context.data.items.objectAtIndex(i).symbolInstance())
+      } else {
+          dataIndex = i;
+      }
+      DataSupplier.supplyDataAtIndex(context.data.key, data[Math.floor(Math.random() * data.length)], i);    
+  }
 }

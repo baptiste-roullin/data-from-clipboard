@@ -1,7 +1,11 @@
 {
+  "name": "Data from clipboard",
   "compatibleVersion": 3,
   "bundleVersion": 1,
   "icon": "icon.png",
+  "author": "Baptiste Roullin",
+  "authorEmail": "baptiste@roullin.net",
+  "homepage": "https://github.com/Saint-loup/random-data-from-clipboard/",
   "suppliesData": true,
   "commands": [
     {
@@ -10,12 +14,20 @@
         "actions": {
           "Startup": "onStartup",
           "Shutdown": "onShutdown",
-          "SupplyTextFromClipboard":"onSupplyTextFromClipboard"
+          "SupplyTextFromClipboard":"onSupplyTextFromClipboard",
+          "SupplyRandomTextFromClipboard":"onSupplyRandomTextFromClipboard"
+
         }
       }
     }
   ],
   "menu": {
-    "title": "data-from-clipboard"
+    "isRoot": false,
+    "title": "Data from clipboard",
+    "items" : [
+      "SupplyRandomTextFromClipboard",
+      "SupplyTextFromClipboard"
+    ]
+
   }
 }
