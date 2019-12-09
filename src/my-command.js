@@ -16,6 +16,17 @@ export function onShutdown () {
   DataSupplier.deregisterDataSuppliers()
 }
 
+function shuffleArray(array) {
+  for(let i = array.length-1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i)
+    const temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+  return array
+
+}
+
 
 export function onSupplyTextFromClipboard (context) {
     supplyOrderedData(context, getPasteBoardData(context));
@@ -97,15 +108,16 @@ function supplyRandomData(context, data) {
   if (!data) {
     return
   }
-
+  let shuffledArray = shuffleArray(data);
   for (let i = 0; i < context.data.requestedCount; i++) {
       let dataIndex;
+
       if (context.data.isSymbolInstanceOverride == 1) {
           let selection = NSDocumentController.sharedDocumentController().currentDocument().selectedLayers().layers();
           dataIndex = selection.indexOfObject(context.data.items.objectAtIndex(i).symbolInstance())
       } else {
           dataIndex = i;
       }
-      DataSupplier.supplyDataAtIndex(context.data.key, data[Math.floor(Math.random() * data.length)], i);    
+      DataSupplier.supplyDataAtIndex(context.data.key, shuffledArray[dataIndex % shuffledArray.length], i);    
   }
 }
