@@ -1,11 +1,11 @@
-### BETA VERSION
+### BETA VERSION. Bug reports and feedbacks are welcome
 
 [The latest release is here](https://github.com/Saint-loup/data-from-clipboard/releases/latest/download/data-from-clipboard.sketchplugin.zip). Download, unzip and double-click on the .sketchplugin file.
 
 
 ### What you can do with it
 
-Copy a list of text in your clipboard, paste it in a list of layers of symbols overrides. In a random order or not. That's it.
+Copy a list of text in your clipboard, paste it in a list of text layers or symbols overrides. That's it. There's also a command shuffling the order.
 
 ![](https://raw.githubusercontent.com/Saint-loup/data-from-clipboard/master/assets/de%CC%81mo%20data%20from%20clipboard.gif)
 
