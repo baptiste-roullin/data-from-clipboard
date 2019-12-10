@@ -70,7 +70,7 @@ function getPasteBoardData(context) {
         if (supportedPasteboardTypes.indexOf(String(pasteboardType)) > -1 ) {
 
           let clipboardString = pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString);
-          let clipboardArray = clipboardString.split(/\n/g);
+          let clipboardArray = clipboardString.replace(/\n\n/, "\n").split(/\n/g);
           return clipboardArray
         }
         else {
