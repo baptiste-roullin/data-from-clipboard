@@ -5,7 +5,7 @@
 
 ### What you can do with it
 
-Copy a list of text in your clipboard, paste it in a list of text layers or symbols overrides. That's it. There's also a command shuffling the order.
+Copy a list of text in your clipboard, paste it in a list of text layers or symbols overrides. That's it. There's also a command to shuffle the order.
 
 ![](https://raw.githubusercontent.com/Saint-loup/data-from-clipboard/master/assets/de%CC%81mo%20data%20from%20clipboard.gif)
 
