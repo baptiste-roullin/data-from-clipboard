@@ -7,6 +7,7 @@
   "authorEmail": "baptiste@roullin.net",
   "homepage": "https://github.com/Saint-loup/random-data-from-clipboard/",
   "suppliesData": true,
+  "icon": "icon.png",
   "commands": [
     {
       "script": "my-command.js",
