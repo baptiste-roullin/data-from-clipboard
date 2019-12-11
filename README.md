@@ -1,6 +1,4 @@
-### BETA VERSION. Bug reports and feedbacks are welcome
-
-[The latest release is here](https://github.com/Saint-loup/data-from-clipboard/releases/latest/download/data-from-clipboard.sketchplugin.zip). Download, unzip and double-click on the .sketchplugin file.
+[The latest release is here](https://github.com/Saint-loup/data-from-clipboard/releases/latest/download/data-from-clipboard.sketchplugin.zip). Download, unzip and double-click on the .sketchplugin file. Bug reports and feedbacks are welcome.
 
 
 ### What you can do with it
