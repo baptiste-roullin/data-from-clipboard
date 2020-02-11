@@ -1,3 +1,5 @@
+## Data from clipboard. Look Ma, no file
+
 [The latest release is here](https://github.com/Saint-loup/data-from-clipboard/releases/latest/download/data-from-clipboard.sketchplugin.zip). Download, unzip and double-click on the .sketchplugin file. Bug reports and feedbacks are welcome.
 
 
