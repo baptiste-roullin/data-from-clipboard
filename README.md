@@ -3,7 +3,7 @@
 [The latest release is here](https://github.com/Saint-loup/data-from-clipboard/releases/latest/download/data-from-clipboard.sketchplugin.zip). Download, unzip and double-click on the .sketchplugin file. Bug reports and feedbacks are welcome.
 
 
-### What you can do with it
+### how it works
 
 Copy a list of text in your clipboard, paste it into text layers or symbols overrides. That's it. There's also a command to shuffle the order.
 
