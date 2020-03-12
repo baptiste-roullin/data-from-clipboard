@@ -1,9 +1,9 @@
 {
   "name": "data-from-clipboard",
   "version": "0.4.0",
-  "description": "A DataSupplier plugin",
+  "description": "Populate a bunch of layers from a list of text in the clipboard",
   "engines": {
-    "sketch": ">=3.0"
+    "sketch": "50"
   },
   "repository": {
     "type": "git",
