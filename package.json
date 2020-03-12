@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "description": "Populate a bunch of layers from a list of text in the clipboard",
   "engines": {
-    "sketch": "50"
+    "sketch": "52"
   },
   "repository": {
     "type": "git",
