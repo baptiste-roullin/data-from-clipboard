@@ -1,6 +1,6 @@
 {
   "name": "data-from-clipboard",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Populate a bunch of layers from a list of text in the clipboard",
   "engines": {
     "sketch": "52"
