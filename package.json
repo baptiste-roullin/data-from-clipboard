@@ -3,7 +3,7 @@
   "version": "0.5.0",
   "description": "Populate a bunch of layers from a list of text in the clipboard",
   "engines": {
-    "sketch": "52"
+    "sketch": "68"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,6 @@
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.5.2"
+    "@skpm/builder": "^1.3.0"
   }
 }
