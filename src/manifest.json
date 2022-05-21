@@ -1,23 +1,23 @@
 {
+  "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
   "name": "Data from clipboard",
-  "compatibleVersion": 3,
-  "bundleVersion": 1,
-  "icon": "icon.png",
+  "compatibleVersion": "85",
+  "version": "0.5.8",
   "author": "Baptiste Roullin",
   "authorEmail": "baptiste@roullin.net",
-  "homepage": "https://github.com/Saint-loup/data-from-clipboard/",
+  "homepage": "https://github.com/baptiste-roullin/data-from-clipboard",
   "suppliesData": true,
   "icon": "icon.png",
   "commands": [
     {
       "script": "my-command.js",
+      "identifier": "supply-data-from-clipboard",
       "handlers": {
         "actions": {
           "Startup": "onStartup",
           "Shutdown": "onShutdown",
-          "SupplyTextFromClipboard":"onSupplyTextFromClipboard",
-          "SupplyRandomTextFromClipboard":"onSupplyRandomTextFromClipboard"
-
+          "SupplyTextFromClipboard": "onSupplyTextFromClipboard",
+          "SupplyRandomTextFromClipboard": "onSupplyRandomTextFromClipboard"
         }
       }
     }
@@ -25,10 +25,9 @@
   "menu": {
     "isRoot": false,
     "title": "Data from clipboard",
-    "items" : [
+    "items": [
       "SupplyRandomTextFromClipboard",
       "SupplyTextFromClipboard"
     ]
-
   }
 }

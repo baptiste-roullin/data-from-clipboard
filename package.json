@@ -1,13 +1,10 @@
 {
   "name": "data-from-clipboard",
-  "version": "0.5.8",
+  "repository": "https://github.com/baptiste-roullin/data-from-clipboard",
   "description": "Populate a bunch of layers from a list of text in the clipboard",
+  "version": "0.5.8",
   "engines": {
-    "sketch": "68"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Saint-loup/data-from-clipboard.git"
+    "sketch": ">=49.0"
   },
   "skpm": {
     "name": "data-from-clipboard",
@@ -15,12 +12,17 @@
     "main": "data-from-clipboard.sketchplugin",
     "assets": [
       "assets/**/*"
-    ]
+    ],
+    "sketch-assets-file": "sketch-assets/icons.sketch"
   },
   "scripts": {
     "build": "skpm-build",
     "watch": "skpm-build --watch",
     "start": "skpm-build --watch --run",
     "postinstall": "npm run build && skpm-link"
-  }
+  },
+  "devDependencies": {
+    "@skpm/builder": "^0.8.0"
+  },
+  "author": "Baptiste <shakespearien@gmail.com>"
 }
