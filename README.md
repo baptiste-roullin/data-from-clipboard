@@ -7,6 +7,6 @@
 
 Copy a list of text in your clipboard, paste it into text layers or symbols overrides. That's it. There's also a command to shuffle the order.
 
-![](https://raw.githubusercontent.com/Saint-loup/data-from-clipboard/master/assets/de%CC%81mo%20data%20from%20clipboard.gif)
+![](https://github.com/baptiste-roullin/data-from-clipboard/blob/38384e59bb37dfb6aaa1dc0e114a4acae9742f91/d%C3%A9mo%20data%20from%20clipboard.gif)
 
 Some of the code is adapted from [Automate-Sketch](https://github.com/Ashung/Automate-Sketch/blob/master/automate-sketch.sketchplugin/Contents/Sketch/Data/Supply_Data.js)
