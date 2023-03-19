@@ -2,7 +2,7 @@
   "name": "data-from-clipboard",
   "repository": "https://github.com/baptiste-roullin/data-from-clipboard",
   "description": "Populate a bunch of layers from a list of text in the clipboard",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "engines": {
     "sketch": ">=49.0"
   },
