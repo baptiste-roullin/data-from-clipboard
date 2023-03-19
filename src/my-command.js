@@ -6,10 +6,11 @@ const sketch = require('sketch')
 const { DataSupplier } = sketch
 const UI = require('sketch/ui')
 const util = require('util')
+var utils = require('sketch-utils')
 
 export function onStartup() {
-  DataSupplier.registerDataSupplier("public.text", "Text from clipboard", "SupplyTextFromClipboard");
-  DataSupplier.registerDataSupplier("public.text", "Random text from clipboard", "SupplyRandomTextFromClipboard");
+  DataSupplier.registerDataSupplier("public.text", "Text from clipboard", "SupplyTextFromClipboard")
+  DataSupplier.registerDataSupplier("public.text", "Random text from clipboard", "SupplyRandomTextFromClipboard")
 
 }
 
@@ -29,15 +30,15 @@ function shuffleArray(array) {
 }
 
 export function onSupplyTextFromClipboard(context) {
-  supplyOrderedData(context, getPasteBoardData(context));
+  supplyOrderedData(context, getPasteBoardData(context))
 };
 
 export function onSupplyRandomTextFromClipboard(context) {
-  supplyRandomData(context, getPasteBoardData(context));
+  supplyRandomData(context, getPasteBoardData(context))
 };
 
 function getPasteBoardData(context) {
-  let pasteboard = NSPasteboard.generalPasteboard();
+  let pasteboard = NSPasteboard.generalPasteboard()
   let supportedPasteboardTypes = [
     "public.rtf",
     "public.string",
@@ -58,19 +59,19 @@ function getPasteBoardData(context) {
     "com.microsoft.word.doc",
     "com.microsoft.excel.xls",
     "com.microsoft.powerpoint.ppt"
-  ];
+  ]
 
   // test wether pasteboard not empty
   if (pasteboard.pasteboardItems().count() > 0) {
-    let pasteboardType = pasteboard.pasteboardItems().firstObject().types().firstObject();
+    let pasteboardType = pasteboard.pasteboardItems().firstObject().types().firstObject()
     //console.log(pasteboardType, supportedPasteboardTypes.indexOf(String(pasteboardType)))
 
     // test wether content is text
     if (supportedPasteboardTypes.indexOf(String(pasteboardType)) > -1) {
 
-      let clipboardString = pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString);
+      let clipboardString = pasteboard.pasteboardItems().firstObject().stringForType(NSPasteboardTypeString)
       //console.log(/\n\n/.test(clipboardString));
-      let clipboardArray = clipboardString.replace(/\n+/, "\n").split(/\n/g);
+      let clipboardArray = clipboardString.replace(/\n+/, "\n").split(/\n/g)
       return clipboardArray
     }
     else {
@@ -85,18 +86,16 @@ function getPasteBoardData(context) {
   }
 }
 
-function replaceSelection(context, newData) {
-  util.toArray(context.data.items).map(sketch.fromNative).forEach(function (item, i) {
-    let selection = "";
-    if (item.type === "DataOverride") {
-      selection = item.value
+function replaceSelection(context, newData, mode) {
+  for (var i = 0; i < context.data.requestedCount; i++) {
+    console.log(utils.prepareValue(context.data.items[0]).type)
+    if (utils.prepareValue(context.data.items[i]).type == 'MSSelectionItem' && mode != 'random') {
+      UI.message("Please select a text layer.")
     }
     else {
-      selection = item.text
+      DataSupplier.supplyData(context.data.key, newData)
     }
-    const line = i % newData.length
-    DataSupplier.supplyDataAtIndex(context.data.key, newData[line], i);
-  })
+  }
 }
 
 function supplyOrderedData(context, newData) {
@@ -110,6 +109,6 @@ function supplyRandomData(context, newData) {
   if (!newData) {
     return
   }
-  let shufflednewData = shuffleArray(newData);
-  replaceSelection(context, shufflednewData)
+  let shufflednewData = shuffleArray(newData)
+  replaceSelection(context, shufflednewData, "random")
 }

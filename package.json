@@ -2,7 +2,7 @@
   "name": "data-from-clipboard",
   "repository": "https://github.com/baptiste-roullin/data-from-clipboard",
   "description": "Populate a bunch of layers from a list of text in the clipboard",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "engines": {
     "sketch": ">=49.0"
   },
@@ -22,7 +22,8 @@
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.8.0"
+    "@skpm/builder": "^0.8.0",
+    "sketch-utils": "^0.2.10"
   },
   "author": "Baptiste <shakespearien@gmail.com>"
 }
