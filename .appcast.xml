@@ -2,7 +2,7 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <item>
-      <enclosure url="https://github.com/baptiste-roullin/data-from-clipboard/releases/download/v0.6.1/data-from-clipboard.sketchplugin.zip" sparkle:version="0.6.2"/>
+      <enclosure url="https://github.com/baptiste-roullin/data-from-clipboard/releases/download/v0.6.1/data-from-clipboard.sketchplugin.zip" sparkle:version="0.6.1"/>
     </item>
     <item>
       <enclosure url="https://github.com/baptiste-roullin/data-from-clipboard/releases/download/v0.6.0/data-from-clipboard.sketchplugin.zip" sparkle:version="0.6.0"/>
