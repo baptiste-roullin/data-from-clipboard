@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
   "name": "Data from clipboard",
   "compatibleVersion": "94.1",
-  "version": "0.6.2",
+  "version": "0.6.1",
   "author": "Baptiste Roullin",
   "authorEmail": "baptiste@roullin.net",
   "homepage": "https://github.com/baptiste-roullin/data-from-clipboard",
